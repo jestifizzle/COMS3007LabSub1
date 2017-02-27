@@ -4,6 +4,7 @@ import java.util.*;
  * Created by jesse on 2017/02/27.
  */
 public class LabSubmission1 {
+    public static int Err = 0;
 
     public static void main(String[] args){
 
@@ -60,6 +61,7 @@ public class LabSubmission1 {
         for (int m = 0; m < learntWeight.length; m++){
             System.out.println("Final weight " + (m+1) + ": " + learntWeight[m]);
         }
+        System.out.println("Total Error of the dataset is: " + Err);
 
         in.close();
     }
@@ -98,6 +100,7 @@ public class LabSubmission1 {
             int O = Order.get(j);
             double[] row = X.get(O);
             int Y = percept(W, row);
+            Err = Err + Math.abs(T[O]-Y);
 
             for (int k = 0; k < row.length; k++){
                 W[k] = W[k] + (n*(T[O] - Y)*row[k]);
